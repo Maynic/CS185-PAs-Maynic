@@ -1,31 +1,11 @@
 <!DOCTYPE html>
 <title>Maynic Ye</title>
+<script type="text/javascript" src="index.js"></script>
+
 <html>
 <head>
+  <link rel="stylesheet" href="styles.css">
 <style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: #111;
-}
 
 table {
   font-family: arial, sans-serif;
@@ -44,10 +24,12 @@ td, th {
 <body>
 
 <ul>
-  <li><a class="active" href="text.html">Text</a></li>
+  <li><a href="text.html">Text</a></li>
   <li><a href="images.html">Image</a></li>
   <li><a href="videos.html">Video</a></li>
-  <li><a href="table.html">Table</a></li>
+  <li><b href="table.html">Table</b></li>
+  <li><a href="email.html" >Email</a></li>
+
 </ul>
 
 <h2>Projects</h2>
@@ -69,6 +51,8 @@ td, th {
     <td>2019</td>
   </tr>
 </table>
+
+<button onclick="topFunction()" id="myBtn" class="myBtn" title="Go to top">Top</button>
 
 </body>
 </html>

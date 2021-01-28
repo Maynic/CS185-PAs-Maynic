@@ -1,56 +1,78 @@
 <!DOCTYPE html>
 <title>Maynic Ye</title>
+<script type="text/javascript" src="index.js"></script>
+
 <html>
 <head>
-<style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+  <link rel="stylesheet" href="styles.css">
 
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: #111;
-}
-</style>
 </head>
 <body>
+  <script>
+    window.addEventListener('load', thing);
+    window.onscroll = function() {scrollFunction()};
 
+  </script>
 <ul>
-  <li><a class="active" href="text.html">Text</a></li>
+  <li><a href="text.html">Text</a></li>
   <li><a href="images.html">Image</a></li>
-  <li><a href="videos.html">Video</a></li>
+  <li><b href="videos.html">Video</b></li>
   <li><a href="table.html">Table</a></li>
+  <li><a href="email.html" >Email</a></li>
+
 </ul>
 <h2>  All videos are recorded by myself.</h2>
+<div id="popWindow" onclick="closeDiv()" class="popWindow" style="display: none;">  
+  <!-- <img class="pimg" src="images/latern3.jpg" alt="HTML5 Icon"> -->
 
+</div>  
+<div id="maskLayer"  class="maskLayer" style="display: none;">  
+      <!-- <a href="#"   style="cursor:pointer;text-decoration: none;">  
+          关闭蒙板   
+      </a>  -->
+      <!-- <img id="enlargedpic" class="pimg" src="images/latern3.jpg" alt="HTML5 Icon"> -->
+      <video id="enlargedpic" controls loop>
+        <source src="videos/IMG_1629.mp4" type="video/mp4">
+      </video>
+</div>  
 <br>
-<video width="320" height="240" controls loop>
-  <source src="videos/IMG_1629.mp4" type="video/mp4">
-</video>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-<video width="320" height="240" controls loop>
-  <source src="videos/IMG_2053.mp4" type="video/mp4">
-</video>
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-<video width="320" height="240" controls loop>
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
   <source src="videos/IMG_2133.mp4" type="video/mp4">
 </video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2053.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2133.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2053.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2133.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2053.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2133.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2053.mp4" type="video/mp4">
+</video>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<video onclick="showDivVid(this)" class="videos" width="320" height="240" controls loop>
+  <source src="videos/IMG_2133.mp4" type="video/mp4">
+</video>
+
+<button onclick="topFunction()" id="myBtn" class="myBtn" title="Go to top">Top</button>
+
 </body>
 </html>
