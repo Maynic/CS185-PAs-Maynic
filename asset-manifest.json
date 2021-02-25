@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/CS185-PAs-Maynic/static/css/main.f97bd3f3.chunk.css",
+    "main.js": "/CS185-PAs-Maynic/static/js/main.8b295c75.chunk.js",
+    "main.js.map": "/CS185-PAs-Maynic/static/js/main.8b295c75.chunk.js.map",
+    "runtime-main.js": "/CS185-PAs-Maynic/static/js/runtime-main.1cae50fe.js",
+    "runtime-main.js.map": "/CS185-PAs-Maynic/static/js/runtime-main.1cae50fe.js.map",
+    "static/js/2.9eca2b94.chunk.js": "/CS185-PAs-Maynic/static/js/2.9eca2b94.chunk.js",
+    "static/js/2.9eca2b94.chunk.js.map": "/CS185-PAs-Maynic/static/js/2.9eca2b94.chunk.js.map",
+    "index.html": "/CS185-PAs-Maynic/index.html",
+    "static/css/main.f97bd3f3.chunk.css.map": "/CS185-PAs-Maynic/static/css/main.f97bd3f3.chunk.css.map",
+    "static/js/2.9eca2b94.chunk.js.LICENSE.txt": "/CS185-PAs-Maynic/static/js/2.9eca2b94.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1cae50fe.js",
+    "static/js/2.9eca2b94.chunk.js",
+    "static/css/main.f97bd3f3.chunk.css",
+    "static/js/main.8b295c75.chunk.js"
+  ]
+}
