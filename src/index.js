@@ -7,6 +7,7 @@ import Table from './Table';
 import Email from './Email';
 import Images from './Images';
 import Videos from './Videos';
+import Zoom from './Zoom';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
@@ -20,7 +21,7 @@ class Tab extends React.Component {
 
 class TabList extends React.Component {
   render() {
-    const Tabs = ['Text', 'Images', 'Videos', 'Table', 'Email'];
+    const Tabs = ['Text', 'Images', 'Videos', 'Table', 'Email', 'Zoom'];
     const tabArray = Tabs.map( (tab) => <Tab name={tab} active={this.props.active} changeID={this.props.changeID}/> );
     return ( <ul> {tabArray} </ul>);
   }
@@ -34,6 +35,7 @@ class Body extends React.Component {
     else if ( this.props.active === "Email")  {return <Email  />;}
     else if ( this.props.active === "Images") {return <Images />;}
     else if ( this.props.active === "Videos") {return <Videos />;}
+    else if ( this.props.active === "Zoom") {return <Zoom />;}
   }
 }
 
