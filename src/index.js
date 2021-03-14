@@ -46,7 +46,7 @@ class App extends React.Component {
     this.handleScroll = this.handleScroll.bind(this)
 
     this.state = {
-      Tab_Id: "Text",
+      Tab_Id: "Zoom",
       scrollTop: 0,
       butt: false
     };
