@@ -47,39 +47,39 @@ class Videos extends React.Component {
             <h2>  All videos are recorded by myself.</h2>
 
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2133.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2133.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2053.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2053.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2133.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2133.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2053.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2053.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2133.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2133.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2053.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2053.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2133.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2133.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2053.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2053.mp4"} type="video/mp4"/>
             </video>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <video onClick={this.showDiv} className="videos" width="320" height="240" controls loop>
-                <source src="videos/IMG_2133.mp4" type="video/mp4"/>
+                <source src={process.env.PUBLIC_URL +"/videos/IMG_2133.mp4"} type="video/mp4"/>
             </video>
         </div>
     

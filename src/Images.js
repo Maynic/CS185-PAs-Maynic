@@ -33,27 +33,27 @@ class Images extends React.Component {
             <img onClick={this.showDiv} src={process.env.PUBLIC_URL + '/images/tianshougeclose.jpg'} alt="tianshougeclose" width="256" height="256" />
             <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
 
-            <img onClick={this.showDiv} src={"images/latern3.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/latern3.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/latern2.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/latern2.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/chrismasstreet.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/chrismasstreet.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/ucsbuniversitycenter.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/ucsbuniversitycenter.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/maple3.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/maple3.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/blursign.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/blursign.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/colorfulstreet.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/colorfulstreet.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/hotelday.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/hotelday.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/hotelnight.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/hotelnight.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/latern.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/latern.jpg"} alt="HTML5 Icon" width="256" height="256"/>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <img onClick={this.showDiv} src={"images/crowd.jpg"} alt="HTML5 Icon" width="256" height="256"/>
+            <img onClick={this.showDiv} src={process.env.PUBLIC_URL + "/images/crowd.jpg"} alt="HTML5 Icon" width="256" height="256"/>
         </div>
     
         const largePic = 
