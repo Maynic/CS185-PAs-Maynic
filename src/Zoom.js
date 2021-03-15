@@ -24,19 +24,27 @@ class ZoomListItem extends React.Component {
           important: false
         };
       }
-  
-      render() {
+    deleteTask = async (id) => {
+        console.log(`large trigger`)   
+        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+            method: 'DELETE',
+        })
+
+        // setTasks(tasks.filter((task) => task.id !== id))
+    }
+    render() {
         // console.log(this.props.meet.id)   
 
         if(this.props.meet.important){
             return <div  className={"meet_item"}>
             <div className={"meet_item_button"}>
                 <span className={"button_ed"}>
-                    <img onClick={this.showDiv}  src={process.env.PUBLIC_URL + '/edit.svg'} alt="ti" width="28" height="28"/>
+                    <img onClick={() => this.props.changeID(this.props.meet)}  src={process.env.PUBLIC_URL + '/edit.svg'} alt="ti" width="28" height="28"/>
                 </span>
                 <span>&nbsp;</span>
                 <span className={"button_ed"}>
-                    <img onClick={this.showDiv} src={process.env.PUBLIC_URL + '/delete.svg'} alt="ti" width="28" height="28"/>
+                    <img onClick={() => this.deleteTask(this.props.meet.id)}
+                     src={process.env.PUBLIC_URL + '/delete.svg'} alt="ti" width="28" height="28"/>
                 </span>
             </div>
 
@@ -64,11 +72,11 @@ class ZoomListItem extends React.Component {
         return <div  className={"meet_item"}>
             <div className={"meet_item_button"}>
                 <span className={"button_ed"}>
-                    <img onClick={this.showDiv}  src={process.env.PUBLIC_URL + '/edit.svg'} alt="ti" width="28" height="28"/>
+                    <img onClick={() => this.props.changeID(this.props.meet)}  src={process.env.PUBLIC_URL + '/edit.svg'} alt="ti" width="28" height="28"/>
                 </span>
                 <span>&nbsp;</span>
                 <span className={"button_ed"}>
-                    <img onClick={this.showDiv} src={process.env.PUBLIC_URL + '/delete.svg'} alt="ti" width="28" height="28"/>
+                    <img onClick={() => this.deleteTask(this.props.meet.id)} src={process.env.PUBLIC_URL + '/delete.svg'} alt="ti" width="28" height="28"/>
                 </span>
             </div>
 
@@ -102,28 +110,83 @@ class ZoomList extends React.Component {
       }
   
       render() {
-        //   return <ZoomListItem meetings={this.props.meetings}/>
-        // const Tabs = ['Text', 'Images', 'Videos', 'Table', 'Email', 'Zoom'];
-        // const tabArray = Tabs.map( (tab) => <Tab name={tab} active={this.props.active} changeID={this.props.changeID}/> );
-        const mmmm = this.props.meetings
-        const meets = mmmm.map((meet) => 
+        const meetsArray = this.props.meetings
+        if(meetsArray.length === 0) {
+            return <h3>No scheduled meeting!</h3>
+        }
+        const meets = meetsArray.map((meet) => 
         <div>
-        <ZoomListItem key={meet.id} meet={meet}/>
+        <ZoomListItem key={meet.id} meet={meet} changeID={this.props.changeID}/>
         <br/>
         </div>
         )
         return ( <div> {meets} </div>);
-        // return(
-        //     <div>
-
-        //         {}
-        //     </div>
-        // )
       }
 }
 class ZoomInput extends React.Component {
 
+    saveMeeting = async() => {
+        var title = document.getElementById('title').value;
+        var day = document.getElementById('meeting-time').value;
+        var textInfor = document.getElementById('link').value;
+        var important = document.getElementById('important').value;
+        if (title.length > 30) {
+            alert('Title can not be more than 30 characters!')
+            return
+        }
+        if (!title) {
+            alert('Please add a title!')
+            return
+        }
+        if ( !textInfor.includes("zoom") ){
+            alert('Make sure your link contains "zoom"!')
+            return
+        }
+        // console.log(`title: ${title}`)   
+        // console.log(`date: ${day}`)   
+        // console.log(`link: ${textInfor}`)   
+        // console.log(`important: ${important}`)   
+
+        var task = {title, day, textInfor, important}
+        const res = await fetch("http://localhost:5000/tasks", {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(task),
+        })
+    }
+    updateMeeting = async(id) => {
+        var title = document.getElementById('title').value;
+        var day = document.getElementById('meeting-time').value;
+        var textInfor = document.getElementById('link').value;
+        var important = document.getElementById('important').value;
+        if (title.length > 30) {
+            alert('Title can not be more than 30 characters!')
+            return
+        }
+        if (!title) {
+            alert('Please add a title!')
+            return
+        }
+        if ( !textInfor.includes("zoom") ){
+            alert('Make sure your link contains "zoom"!')
+            return
+        }
+        var task = {title, day, textInfor, important}
+
+        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify(task),
+          })
+
+    }
+
     render() {
+
         // Get current time
         // var date = new Date('1995-12-17T03:24:00');
         var date = new Date();
@@ -144,45 +207,95 @@ class ZoomInput extends React.Component {
         if(tem.length === 1){ct += "0"+tem;}
         else{ct += tem; }
 
-        var input_title = 
-        <div>
-        <label for="title">Title: </label><br/>
-        <input type="text" id="title" name="title"/>
-        </div>
-        
-        var input_date = 
-        <div>
-        <label for="meeting-time">Date: </label><br/>
-        <input type="datetime-local" id="meeting-time"
-        name="meeting-time" value={ct} min={ct} required/>
-        </div>
+        // {this.props.editID.title}
+        console.log(`meet: ${this.props.editId}`)   
 
-        var input_link = 
-        <div>
-        <label for="link">Zoom Link: </label><br/>
-        <input type="url" id="link" name="link"/>
-        </div>
-        
-        var input_important = 
-        <div>
-        <label for="important">Important: </label>
-        <input type="checkbox" id="important" name="important"/>
-        </div>
-        
-        var button_save = <button onClick={this.executeScroll} id="button_save"  className={"button_save"} > Save Meeting </button>
+        if(this.props.editId != null){
+            var input_title = 
+            <div key={this.props.editId.title}>
+            <label for="title">Title: </label><br/>
+            <input type="text" id="title" name="title" size="24" defaultValue={this.props.editId.title}/>
+            </div>
+            var input_date = 
+            <div>
+            <label for="meeting-time">Date: </label><br/>
+            <input type="datetime-local" id="meeting-time"
+            name="meeting-time" value={ct} min={ct} required/>
+            </div>
+    
+            var input_link = 
+            <div key={this.props.editId.textInfor}>
+            <label for="link">Zoom Link: </label><br/>
+            <input type="url" id="link" name="link" size="24" defaultValue={this.props.editId.textInfor}/>
+            </div>
+            
+            var input_important = 
+            <div>
+            <label for="important">Important: </label>
+            <input type="checkbox" id="important" name="important" checked={this.props.editId.important}/>
+            </div>
 
+            var button_update = <button
+            onClick={() => this.updateMeeting(this.props.editId.id)}
+            id="button_save"  className={"button_save"} > Update Meeting </button>
 
-        var container =
-        <div id="zoom_input"  className={"zoom_input"} >  
-            <h1 className={"zoom_input_title"}>Meeting Info</h1>
-            {input_title}
-            {input_date}
-            {input_link}
-            {input_important}
-            <br/>
-            {button_save}
-        </div>
-        return container;
+            var button_cancel = <button onClick={() => this.props.changeID(this.props.editId)} id="button_save"  
+            className={"button_save"} > Cancel </button>
+
+            var container = 
+            <div id="zoom_input"  className={"zoom_input"} >  
+                <h1 className={"zoom_input_title"}>Meeting Info</h1>
+                {input_title}
+                {input_date}
+                {input_link}
+                {input_important}
+                <br/>
+                {button_update}
+                <br/>
+                {button_cancel}
+            </div>
+            return container;
+        }
+        else{
+            var input_title = 
+            <div>
+            <label for="title">Title: </label><br/>
+            <input type="text" id="title" name="title" size="24" />
+            </div>
+            
+            var input_date = 
+            <div>
+            <label for="meeting-time">Date: </label><br/>
+            <input type="datetime-local" id="meeting-time"
+            name="meeting-time" value={ct} min={ct} required/>
+            </div>
+
+            var input_link = 
+            <div>
+            <label for="link">Zoom Link: </label><br/>
+            <input type="url" id="link" name="link" size="24"/>
+            </div>
+            
+            var input_important = 
+            <div>
+            <label for="important">Important: </label>
+            <input type="checkbox" id="important" name="important"/>
+            </div>
+            
+            var button_save = <button onClick={this.saveMeeting} id="button_save"  className={"button_save"} > Save Meeting </button>
+            
+            var container = 
+            <div id="zoom_input"  className={"zoom_input"} >  
+                <h1 className={"zoom_input_title"}>Meeting Info</h1>
+                {input_title}
+                {input_date}
+                {input_link}
+                {input_important}
+                <br/>
+                {button_save}
+            </div>
+            return container;
+        }
     }
 
 }
@@ -191,69 +304,77 @@ class Zoom extends React.Component {
       super(props);
       this.state = {
         Tab_Id: "Zoom",
-        isList:false,
+        isList:true,
         largeSrc:'/images/tianshougeclose.jpg',
-        meetings:[]
+        meetings:[],
+        // editing:false,
+        editID:null
       };
     }
-    closeDiv = () => {
-        this.setState({ isList:false });   
+    closeCreate = () => {
+        this.setState({ isList:true });   
     }
-    showDiv = (source) => {
-        this.setState({ 
-            isList:true,
-            largeSrc:source.target.src
-        });
+    showCreate = () => {
+        this.setState({ isList:false});
+    }
 
-        // console.log(`large: ${source.target.src}`)   
-        // console.log(`src: ${this.state.largeSrc}`)   
-    }
+    changeID = (id) => {
+        if(this.state.editID != null && this.state.editID.id == id.id){
+            this.setState({editID:null});
+        }
+        else{this.setState({editID:id});}
+      }
 
     fetchMeetings = async() => {
         const res = await fetch("http://localhost:5000/tasks")
         const data = await res.json()
         // console.log(data[0])   
-        // return data
-        // return data[0]
         this.setState({ meetings:data});   
-
     }
 
     render() {
         {this.fetchMeetings()}
-        const container = 
+
+        const container_create = 
         <div className={"zoom_background"} >
-            {/* <div className={"zoom_main_container"}> */}
             <h2>Zoom Meeting Manager</h2>
-            {/* <button onClick={this.executeScroll} className={'myBtn'}> Top </button> */}
-            <button onClick={this.executeScroll}  className={"button_create"} > Create Meeting </button>
-            {/* <br/><hr/><br/> */}
+            <button onClick={this.closeCreate}  className={"button_create"} > Full Schedule </button>
             <br/><br/>
-            <ZoomInput/>
-            {/* <br/><hr/><br/> */}
-            <br/><br/>
-            <ZoomList meetings={this.state.meetings}/>
-            {/* <ZoomListItem meet={this.state.meetings}/> */}
-            {/* <img onClick={this.showDiv} src={process.env.PUBLIC_URL + '/images/tianshougeclose.jpg'} alt="tianshougeclose" width="256" height="256" />
-            <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> */}
-            {/* </div> */}
+            <ZoomInput editId={this.state.editID}/>
         </div>
-    
-        // const largePic = 
-        // <div >
-        //     <div id="popWindow" onClick={this.closeDiv} className={"popWindow"} />
-        //     <div id="maskLayer"  className={"maskLayer"} >  
-        //     {/* <img id="enlargedpic" className={"pimg"} src={process.env.PUBLIC_URL + '/images/tianshougeclose.jpg'} alt="tianshougeclose" /> */}
-        //         <img id="enlargedpic" className={"pimg"} src={this.state.largeSrc} alt="large" />
-        //     </div>  
-        //     {container}
+
+        // const container_top = <div>
+                
         // </div>
+        var container_list = <div></div>
+        if(this.state.editID != null){
+            // const edit = <div>
+            //     {container_list}
+            // </div>
+            container_list = 
+            <div className={"zoom_background"} >
+                <h2>Zoom Meeting Manager</h2>
+                <button onClick={this.showCreate}  className={"button_create"} > Create Meeting </button>
+                <br/><br/>
+                <ZoomInput editId={this.state.editID} changeID={this.changeID}/>
+                <br/><br/>
+                <ZoomList meetings={this.state.meetings} changeID={this.changeID}/>
+            </div>
+        }
+        else{
+            container_list = <div className={"zoom_background"} >
+                <h2>Zoom Meeting Manager</h2>
+                <button onClick={this.showCreate}  className={"button_create"} > Create Meeting </button>
+                <br/><br/>
+                <ZoomList meetings={this.state.meetings} changeID={this.changeID}/>
+            </div>
+        }
+        // console.log(this.state.isList)   
 
-
-        // if (this.state.isList === false) {
-            return container;
-        // }
-        // else {return largePic;}
+        if (this.state.isList) {
+            return container_list;
+        }
+        else {return container_create;}
 
     }
 }

@@ -1,18 +1,11 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "important": true,
-      "title": "CS 185 Misha's Office Hour",
-      "day": "2021-03-05T19:00",
-      "textInfor": "https://ucsb.zoom.us/j/86623368970"
-    },
-    {
-      "id": 2,
-      "important": true,
-      "title": "CS 185 Wenda's Office Hour",
-      "day": "2021-03-05T09:00",
-      "textInfor": "https://ucsb.zoom.us/j/8311826784"
+      "title": "CS 185 Misha's ",
+      "day": "2021-03-14T17:59",
+      "textInfor": "https://ucsb.zoom.us/j/86623368970",
+      "important": "on",
+      "id": 1
     },
     {
       "id": 3,
@@ -22,11 +15,18 @@
       "textInfor": "https://ucsb.us/j/8311826784"
     },
     {
-      "title": "new meeting",
-      "day": "2021-02-27T00:30",
-      "textInfor": "https://ucsb.zoom.us/j/8311826784",
-      "important": false,
-      "id": 4
+      "title": "dfd",
+      "day": "2021-03-14T16:15",
+      "textInfor": "zoom",
+      "important": "on",
+      "id": 5
+    },
+    {
+      "title": "CS 185 Misha's Office",
+      "day": "2021-03-14T17:51",
+      "textInfor": "https://ucsb.zoom.us/j/86623368970",
+      "important": "on",
+      "id": 6
     }
   ]
 }

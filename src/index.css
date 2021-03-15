@@ -115,6 +115,7 @@ td, th {
 .zoom_input{
   display: inline-block;
   /* width: 50%;   */
+  /* width: 400px;   */
 
   font-size: 18px;
   border: none;
@@ -245,6 +246,7 @@ td, th {
 .zoom_background{
   background-color: #e3f6f5;
   padding-Left: 20px;
+  min-height: 960px;
 }
 .zoom_main_container{
   /* background-color: #e3f6f5; */
