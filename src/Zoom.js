@@ -140,7 +140,7 @@ class ZoomInput extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         // You don't have to do this check first, but it can help prevent an unneeded render
-        if (this.props.editId != null && nextProps.editId !== this.props.editId) {
+        if (this.props.editId != null && nextProps.editId != null && nextProps.editId !== this.props.editId) {
             console.log(`meet: ${this.props.editId}`)   
             this.setState({ checked: nextProps.editId.important });
         }
