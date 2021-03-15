@@ -36,6 +36,7 @@ class ZoomListItem extends React.Component {
         // console.log(this.props.meet.id)   
 
         if(this.props.meet.important){
+            // console.log(this.props.meet.important)   
             return <div  className={"meet_item"}>
             <div className={"meet_item_button"}>
                 <span className={"button_ed"}>
@@ -124,14 +125,33 @@ class ZoomList extends React.Component {
       }
 }
 class ZoomInput extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { checked: false }
+        // console.log(`meet: ${this.props.editId != null}`)   
+        if(this.props.editId != null) {
+            this.state = { checked: this.props.editId.important }
+            // console.log(`meet: `)   
 
+        }
+        // console.log(`meet: ${this.state.checked}`)   
+
+        this.handleCheck = this.handleCheck.bind(this);
+    }
+    componentWillReceiveProps(nextProps) {
+        // You don't have to do this check first, but it can help prevent an unneeded render
+        if (this.props.editId != null && nextProps.editId !== this.props.editId) {
+            console.log(`meet: ${this.props.editId}`)   
+            this.setState({ checked: nextProps.editId.important });
+        }
+      }
     saveMeeting = async() => {
         var title = document.getElementById('title').value;
         var day = document.getElementById('meeting-time').value;
         var textInfor = document.getElementById('link').value;
-        var important = document.getElementById('important').value;
+        var important = document.getElementById('important').checked;
         if (title.length > 30) {
-            alert('Title can not be more than 30 characters!')
+            alert('Title should be within 30 characters!')
             return
         }
         if (!title) {
@@ -142,10 +162,10 @@ class ZoomInput extends React.Component {
             alert('Make sure your link contains "zoom"!')
             return
         }
-        // console.log(`title: ${title}`)   
-        // console.log(`date: ${day}`)   
-        // console.log(`link: ${textInfor}`)   
-        // console.log(`important: ${important}`)   
+        console.log(`title: ${title}`)   
+        console.log(`date: ${day}`)   
+        console.log(`link: ${textInfor}`)   
+        console.log(`important: ${important}`)   
 
         var task = {title, day, textInfor, important}
         const res = await fetch("http://localhost:5000/tasks", {
@@ -155,12 +175,13 @@ class ZoomInput extends React.Component {
           },
           body: JSON.stringify(task),
         })
+        this.props.close()
     }
     updateMeeting = async(id) => {
         var title = document.getElementById('title').value;
         var day = document.getElementById('meeting-time').value;
         var textInfor = document.getElementById('link').value;
-        var important = document.getElementById('important').value;
+        var important = this.state.checked;
         if (title.length > 30) {
             alert('Title can not be more than 30 characters!')
             return
@@ -182,9 +203,14 @@ class ZoomInput extends React.Component {
             },
             body: JSON.stringify(task),
           })
+        this.props.changeID(this.props.editId)
 
     }
-
+    handleCheck(e){
+        this.setState({
+         checked: e.target.checked
+        })
+    }
     render() {
 
         // Get current time
@@ -208,9 +234,11 @@ class ZoomInput extends React.Component {
         else{ct += tem; }
 
         // {this.props.editID.title}
-        console.log(`meet: ${this.props.editId}`)   
-
+        // console.log(`meet: ${this.props.editId}`)   
+        
         if(this.props.editId != null){
+
+
             var input_title = 
             <div key={this.props.editId.title}>
             <label for="title">Title: </label><br/>
@@ -220,7 +248,7 @@ class ZoomInput extends React.Component {
             <div>
             <label for="meeting-time">Date: </label><br/>
             <input type="datetime-local" id="meeting-time"
-            name="meeting-time" value={ct} min={ct} required/>
+            name="meeting-time" defaultValue={ct} min={ct} required/>
             </div>
     
             var input_link = 
@@ -230,9 +258,11 @@ class ZoomInput extends React.Component {
             </div>
             
             var input_important = 
-            <div>
+            <div key={this.props.editId.important}>
             <label for="important">Important: </label>
-            <input type="checkbox" id="important" name="important" checked={this.props.editId.important}/>
+            <input type="checkbox" id="important" name="important"
+            onChange={this.handleCheck}
+            checked={this.state.checked}/>
             </div>
 
             var button_update = <button
@@ -267,7 +297,7 @@ class ZoomInput extends React.Component {
             <div>
             <label for="meeting-time">Date: </label><br/>
             <input type="datetime-local" id="meeting-time"
-            name="meeting-time" value={ct} min={ct} required/>
+            name="meeting-time" defaultValue={ct} min={ct} required/>
             </div>
 
             var input_link = 
@@ -315,7 +345,9 @@ class Zoom extends React.Component {
         this.setState({ isList:true });   
     }
     showCreate = () => {
-        this.setState({ isList:false});
+        this.setState({ 
+            editID:null,
+            isList:false});
     }
 
     changeID = (id) => {
@@ -340,7 +372,7 @@ class Zoom extends React.Component {
             <h2>Zoom Meeting Manager</h2>
             <button onClick={this.closeCreate}  className={"button_create"} > Full Schedule </button>
             <br/><br/>
-            <ZoomInput editId={this.state.editID}/>
+            <ZoomInput editId={this.state.editID} close={this.closeCreate}/>
         </div>
 
         // const container_top = <div>
@@ -356,7 +388,7 @@ class Zoom extends React.Component {
                 <h2>Zoom Meeting Manager</h2>
                 <button onClick={this.showCreate}  className={"button_create"} > Create Meeting </button>
                 <br/><br/>
-                <ZoomInput editId={this.state.editID} changeID={this.changeID}/>
+                <ZoomInput editId={this.state.editID} changeID={this.changeID} close={this.closeCreate}/>
                 <br/><br/>
                 <ZoomList meetings={this.state.meetings} changeID={this.changeID}/>
             </div>
@@ -366,7 +398,7 @@ class Zoom extends React.Component {
                 <h2>Zoom Meeting Manager</h2>
                 <button onClick={this.showCreate}  className={"button_create"} > Create Meeting </button>
                 <br/><br/>
-                <ZoomList meetings={this.state.meetings} changeID={this.changeID}/>
+                <ZoomList meetings={this.state.meetings} changeID={this.changeID} />
             </div>
         }
         // console.log(this.state.isList)   

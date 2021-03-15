@@ -122,7 +122,7 @@ td, th {
   outline: none;
   background-color: #fffffe;
   color: #272343;
-  cursor: pointer;
+  /* cursor: pointer; */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 1px 1px 5px #272343;
